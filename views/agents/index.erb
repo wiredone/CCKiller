@@ -1,0 +1,5 @@
+<a href="/agents/new">Add New Agent</a><br>
+
+<% @agents.each do |agent| %>
+  Name: <%= agent.pretty_name %><br>
+<% end %>

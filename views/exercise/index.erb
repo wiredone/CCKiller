@@ -1,0 +1,6 @@
+<a href="/exercises/new">Add New exercise</a><br>
+
+
+<% @assets.each do |asset| %>
+ exercise list number <%= asset.id %>  - Agent Name <%= @agents[asset.asset.to_i].asset_name %> Target <%= asset.id += 1 %> <br>
+<% end %>

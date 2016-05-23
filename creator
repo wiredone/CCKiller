@@ -1,0 +1,37 @@
+#!/Users/user/.rbenv/shims/ruby
+require( 'pg' )
+
+
+begin
+
+      con = PG.connect :dbname => 'killer', :user => 'user'
+
+      con.exec "DROP TABLE IF EXISTS agents CASCADE"
+      con.exec "DROP TABLE IF EXISTS exercise CASCADE"
+      con.exec "DROP TABLE IF EXISTS kills CASCADE"
+
+      con.exec "CREATE TABLE agents(
+                             Id SERIAL4 PRIMARY KEY,
+                             First_Name VARCHAR(255),
+                             Last_Name VARCHAR(255),
+                             Asset_Name VARCHAR(255),
+                             Slack VARCHAR(255)
+
+                            )"
+
+    con.exec "Create table exercise(
+    Id SERIAL4 PRIMARY KEY,
+    asset int4 references agents(id)
+    )"
+
+    con.exec " CREATE TABLE kills(
+    Id SERIAL4 PRIMARY KEY,
+    killer int4 references agents(id),
+    victim int4 references agents(id),
+    datetime_of_kill  TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW()
+    )"
+ensure
+
+  con.close if con
+
+end
