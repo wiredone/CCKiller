@@ -1,0 +1,28 @@
+<a href="/agents/new">Add New Agent</a><br>
+
+<br></br>
+<br></br>
+
+<form action="/exercise/new" method="POST">
+  <!-- <label>Label</label>
+
+  <br></br>
+
+  <input type="text" name="owner[name]" id="exercise_name">
+
+  <br></br> -->
+
+  <label>Choose assets for new exercise:</label>
+  <br></br>
+
+<% @agents.each do |agent| %>
+</br>
+<%= agent.pretty_name %>
+  <input type="checkbox"
+         name="selected_assets[]"
+         value=<%=agent.id%>
+         </br></input>
+<% end %>
+
+<input type="submit" value="Create Exercise">
+</form>

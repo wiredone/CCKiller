@@ -37,6 +37,7 @@ class Agent
 
   def self.delete(id)
  #delete one agent
+
   end
 
 
@@ -51,4 +52,18 @@ class Agent
     return result.first
   end
 
+  # def create_exercise(assets)
+  #      assets.shuffle!
+  #      for asset in assets do
+  #        Exercise.new({'asset' => asset}).save()
+  #   end
+  # #   # #binding.pry
+  # end
+  #
+  # def self.find_by_id(asset_id)
+  #   sql = "select * from agents where id = #{asset_id}"
+  #   agent = Agent.map_item(sql)
+  #
+  #   return agent
+  # end
 end

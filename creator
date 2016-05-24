@@ -7,8 +7,8 @@ begin
       con = PG.connect :dbname => 'killer', :user => 'user'
 
       con.exec "DROP TABLE IF EXISTS agents CASCADE"
-      con.exec "DROP TABLE IF EXISTS exercise CASCADE"
-      con.exec "DROP TABLE IF EXISTS kills CASCADE"
+      con.exec "DROP TABLE IF EXISTS exercises CASCADE"
+      con.exec "DROP TABLE IF EXISTS agents_on_exercises CASCADE"
 
       con.exec "CREATE TABLE agents(
                              Id SERIAL4 PRIMARY KEY,
@@ -19,17 +19,29 @@ begin
 
                             )"
 
-    con.exec "Create table exercise(
+    con.exec "Create table exercises(
     Id SERIAL4 PRIMARY KEY,
-    asset int4 references agents(id)
+    Name VARCHAR(255)
     )"
 
-    con.exec " CREATE TABLE kills(
+    # con.exec "Create table exercise(
+    # Id SERIAL4 PRIMARY KEY,
+    # asset int4 references agents(id)
+    # )"
+
+    # con.exec " CREATE TABLE kills(
+    # Id SERIAL4 PRIMARY KEY,
+    # killer int4 references agents(id),
+    # victim int4 references agents(id),
+    # datetime_of_kill  TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW()
+    # )"
+
+    con.exec "Create table agents_on_exercises(
     Id SERIAL4 PRIMARY KEY,
-    killer int4 references agents(id),
-    victim int4 references agents(id),
-    datetime_of_kill  TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW()
+    asset int4 references agents(id),
+    exercise int4 references exercises(id)
     )"
+
 ensure
 
   con.close if con

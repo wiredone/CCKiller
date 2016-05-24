@@ -1,0 +1,6 @@
+<a href="/exercises/new">Add New exercise</a><br>
+
+
+<% @exercises.each do |exercise| %>
+ exercise id number <%= exercise.id %>  - Exercise Name <%= exercise.name %> <br>
+<% end %>

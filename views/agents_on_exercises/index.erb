@@ -1,0 +1,7 @@
+<a href="/agents_on_exercises/new">Add new agent on exercise</a><br>
+
+
+<% @agents_on_exercises.each do |agent_on_exercise| %>
+<%= agent_on_exercise.id%> <%= agent_on_exercise.asset.asset_name %> <%= agent_on_exercise.exercise.name %> -<br>
+
+<% end %>

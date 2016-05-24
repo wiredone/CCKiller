@@ -20,9 +20,6 @@ class TestAgent < Minitest::Test
     @agent6 = Agent.new( options )
   end
 
-  def test_myid
-
-  end
 
   def test_first_name
     assert_equal( 'Tony', @agent6.first_name())
@@ -46,7 +43,6 @@ class TestAgent < Minitest::Test
 
   end
 
- 
 
   # def test_quantity
   #   assert_equal( Fixnum, @pizza.quantity.class )

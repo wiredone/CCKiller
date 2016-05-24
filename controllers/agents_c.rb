@@ -10,12 +10,12 @@ get '/agents/new' do
   erb :'agents/new'
 end
 
-get '/agents/:id' do
-  erb :'agents/show'
-end
+# get '/agents/:id' do
+#   erb :'agents/show'
+# end
 
-get '/agents/:id/edit' do
-end
+# get '/agents/:id/edit' do
+# end
 
 post '/agents' do
   @agent = Agent.new(params)
@@ -23,8 +23,8 @@ post '/agents' do
   redirect to('/agents')
 end
 
-post '/agents/:id' do
-end
-
-delete '/agents' do
-end
+# post '/agents/:id' do
+# end
+#
+# delete '/agents' do
+# end

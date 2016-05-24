@@ -1,0 +1,20 @@
+
+
+<form  action="/agents_on_exercises" method="post">
+  <label for="exercise_id">Exercise:</label>
+  <select name="exercise">
+    <% @exercises.each do |exercise|%>
+    <option value="<%= exercise.id %>"> <%= exercise.name %></option>
+    <% end %>
+  </select>
+
+<label for="agent_id"> Agent:</label>
+<select name="asset" id="">
+  <% @agents.each do |agent| %>
+  <option value="<%= agent.id %>"> <%= agent.pretty_name %> </option>
+  <% end %>
+</select>
+
+<input type="submit" value="add agent to exercise">
+
+</form>
