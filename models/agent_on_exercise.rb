@@ -14,7 +14,9 @@ class Agent_on_Exercise
   def save()
     sql = "INSERT INTO agents_on_exercises(asset, exercise) VALUES (#{@asset}, #{@exercise}) RETURNING *"
  puts sql
-    return Agent_on_Exercise.map_item(sql)
+   agent_on_exercise = SqlRunner.run_sql(sql).first
+
+    return Agent_on_Exercise.new(agent_on_exercise)
   end
 
   # def game() # TODO:
@@ -75,4 +77,10 @@ class Agent_on_Exercise
  #puts sql
     return Exercise.map_item(sql)
   end
+
+  def self.delete_all()
+    sql = "DELETE FROM agents_on_exercises"
+    SqlRunner.run_sql(sql)
+  end
+
 end

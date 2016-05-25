@@ -3,11 +3,11 @@ require_relative('../db/sql_runner')
 require_relative('agent')
 # do we require_relative
 
-class Exercise
+class Exercise_Agents
 # this is a class only for circle of death matches
 
 
-  attr_accessor :id, :asset
+  attr_accessor :id, :asset,
 
   def initialize(options)
     @id = options['id'].to_i
@@ -17,7 +17,7 @@ class Exercise
 
   def save()
     #this bit is wrong.  it needs to save all the assets
-    sql = "INSERT INTO exercise(asset) VALUES ('#{@asset}') RETURNING *"
+    sql = "INSERT INTO exercises(asset) VALUES ('#{@asset}') RETURNING *"
     asset = SqlRunner.run_sql(sql).first
     result = Exercise.new( asset )
     return result
@@ -61,10 +61,5 @@ class Exercise
  end
 end
 
-def create_exercise(assets)
-    assets.shuffle!
-    for asset in assets do
-      Exercise.new({'asset' => asset}).save()
-  #binding.pry
-    end
+
 end

@@ -5,20 +5,22 @@ require_relative('../models/agent_on_exercise.rb')
 # ßrequire_relative('../models/oub.rb')
 #require_relative('../models/rental.rb')
 
-# Exercise.delete_all()
-# Agents_on_Exercise.delete_all()
-# Agent.delete_all()
+ Exercise.delete_all()
+ Agent.delete_all()
+ Agent_on_Exercise.delete_all()
 
 assets = []
 
-agent1 = Agent.new({ 'first_name' => 'Zak', 'last_name' => 'Buys', 'asset_name' => 'Mr. Pink', 'slack' => 'zak finger' })
-agent2 = Agent.new({ 'first_name' => 'Hamish', 'last_name' => 'McHaggis', 'asset_name' => 'Mr. Green','slack' =>'flash' })
-agent3 = Agent.new({ 'first_name' => 'Rick', 'last_name' => 'Henry', 'asset_name' => 'Mr. Brown','slack' =>'zinger' })
-agent4 = Agent.new({ 'first_name' => 'Keith', 'last_name' => 'McDougal', 'asset_name' => 'Mr. Purple','slack' =>'zinger' })
-agent5 = Agent.new({ 'first_name' => 'Zsolt', 'last_name' => 'Something', 'asset_name' => 'Mr. Taupe','slack' =>'zinger' })
+agent1 = Agent.new({ 'first_name' => 'Zak', 'last_name' => 'Bu', 'asset_name' => 'Mr. #ff69b4', 'slack' => 'drbuys' })
+agent2 = Agent.new({ 'first_name' => 'Alistair', 'last_name' => 'MK', 'asset_name' => 'Mr. #0000ff','slack' =>'PowerlessCube' })
+agent3 = Agent.new({ 'first_name' => 'Seumus', 'last_name' => 'Bl', 'asset_name' => 'Mr. #FAF0BE','slack' =>'seumus' })
+agent4 = Agent.new({ 'first_name' => 'Harry', 'last_name' => 'Sw', 'asset_name' => 'Mr. #483c32','slack' =>'harryaswan' })
+agent5 = Agent.new({ 'first_name' => 'Aidan', 'last_name' => 'Pi', 'asset_name' => 'Mr. #FFFFFF','slack' =>'aidanpinkman' })
+agent6 = Agent.new({ 'first_name' => 'Steven', 'last_name' => 'Me', 'asset_name' => 'Mr. #FF7F00','slack' =>'steve_mj' })
 
-exercise1 = Exercise.new({'name' => 'Circle of Death'})
+exercise1 = Exercise.new({'name' => 'Circle of Death 1 - The Initiation. Test Running the Rules'})
 e1 = exercise1.create
+puts e1.id
 a1 = agent1.save
 # assetsi = [{'asset_id' => a1.id, 'asset_name'=> a1.asset_name}]
 a2 = agent2.save
@@ -29,6 +31,7 @@ a4 = agent4.save
 # assets.push(a4.id)
 a5 = agent5.save
 # assets.push(a5.id)
+a6 = agent6.save
 
 # assetsi << {'asset_id' => a2.id, 'asset_name'=> a2.asset_name}
 # assetsi << {'asset_id' => a3.id, 'asset_name'=> a4.asset_name}
@@ -71,4 +74,11 @@ a5 = agent5.save
 
 # binding.pry
 # nil
-# rental2 = Rental.new({'book_id' => b2.id, 'member_id' => m1.id}).save()
+
+puts exercise1.id
+ exercise_assets1 = Agent_on_Exercise.new({'asset' => a1.id, 'exercise' => e1.id}).save()
+ exercise_assets2 = Agent_on_Exercise.new({'asset' => a2.id, 'exercise' => e1.id}).save()
+ exercise_assets3 = Agent_on_Exercise.new({'asset' => a3.id, 'exercise' => e1.id}).save()
+ exercise_assets4 = Agent_on_Exercise.new({'asset' => a4.id, 'exercise' => e1.id}).save()
+ exercise_assets5 = Agent_on_Exercise.new({'asset' => a5.id, 'exercise' => e1.id}).save()
+ exercise_assets6 = Agent_on_Exercise.new({'asset' => a6.id, 'exercise' => e1.id}).save()

@@ -17,8 +17,8 @@ class Exercise
   def create()
     sql = "INSERT INTO exercises (name) VALUES ('#{@name} ') RETURNING *"
     exercise = SqlRunner.run_sql(sql).first
-    return Exercise.new(exercise)
-  end
+    return  Exercise.new( exercise)
+    end
 
   def self.all()
   sql = "select * from exercises"
@@ -35,4 +35,10 @@ class Exercise
     result = Exercise.map_items(sql)
     return result.first
   end
+
+  def self.delete_all()
+    sql = "DELETE FROM exercises"
+    SqlRunner.run_sql(sql)
+  end
+
 end
