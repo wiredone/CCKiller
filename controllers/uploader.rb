@@ -20,15 +20,22 @@ post "/import" do
     f.write(params['myfile'][:tempfile].read)
  end
   # File.open('uploads/' + params['myfile'][:filename], "w")
-    CSV.foreach ('uploads/' + params['myfile'][:filename]) do |row|
+    data = CSV.read('uploads/' + params['myfile'][:filename])[1 .. -1]
+    puts data.methods
+    puts data.class
+    puts data.inspect
+    data.each  do |row1|
+    # CSV.foreach ('uploads/' + params['myfile'][:filename]) do |row1|
     #puts row.inspect
-    first_name=row[1]
-    last_name=row[2]
-    slack=row[3]
-    agent=Agent.new({ 'first_name' => "#{first_name}", 'last_name'=>'last_name', 'slack'=>'slack'})
+    puts row1.inspect
+    first_name=row1[1]
+    last_name=row1[2]
+    slack=row1[3]
+    agent=Agent.new({ 'first_name' => "#{first_name}", 'last_name'=>"#{last_name}", 'slack'=>"#{slack}"})
  #   agent1=Agent.new({ 'first_name' => 'Zak', 'last_name' => 'Bu', 'asset_name' => 'Mr. #ff69b4', 'slack' => 'drbuys' })
 
     agent.save
   end
-  return "The file was successfully imported!"
+
+  return "The file was successfully imported!  You may now close this tab"
 end
