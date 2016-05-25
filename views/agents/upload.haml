@@ -1,0 +1,8 @@
+%html
+  %body
+    %h1 File uploader!
+    %form(method="post" enctype='multipart/form-data' action='/import')
+      %input(type='file' name='myfile')
+      %br
+      %input(type='submit' value='Import!')
+%a{:href => "/agents"} Agents

@@ -4,12 +4,15 @@ require_relative('../db/sql_runner')
 
 class Exercise
 
-  attr_accessor :id, :name #:type, :assets
+  attr_accessor :id, :name, :status
 #TODO remove access to non-writeables
 
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
+    @open = options['status'] #should bool#
+    @running = options['running']
+
 #    @type = options['type']
   end
 

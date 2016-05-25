@@ -1,6 +1,16 @@
 <a href="/exercises/new">Add New exercise</a><br>
 
+<table>
 
+  <tr>
+      <th>Exercise ID</th>
+      <th>Exercise Name</th>
+      <th>Status</th>
+    </tr>
 <% @exercises.each do |exercise| %>
- exercise id number <%= exercise.id %>  - Exercise Name <%= exercise.name %> <br>
+<tr>
+
+ <td> <%= exercise.id %> </td>
+ <td> <%= exercise.name %> </td>
+</tr>
 <% end %>

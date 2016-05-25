@@ -1,4 +1,5 @@
 require('pg')
+require('csv')
 require_relative('../db/sql_runner')
 
 class Agent
@@ -18,12 +19,19 @@ class Agent
     @pretty_name = @first_name +" " + @last_name
   end
 
+
+
   def save()
     sql = "INSERT INTO agents (first_name, last_name, asset_name, slack) VALUES ('#{@first_name}', '#{@last_name}', '#{@asset_name}','#{@slack}' ) RETURNING *"
     agent = SqlRunner.run_sql(sql).first
     result = Agent.new( agent )
     return result
   end
+
+
+ def export()
+
+ end
 
   def self.all()
     sql = "SELECT * FROM agents"
