@@ -1,10 +1,20 @@
-<a href="/agents/new">Add New Agent</a><br>
 
-This is a list of registered agents
+<a class="child" href="/agents/new">Add New Agent</a><br>
+
+
+<table class="child">
+
+  <tr>
+      <th>Exercise ID</th>
+      <th>Agent Name</th>
+
+    </tr>
+<caption>This is a list of registered agents</caption>
+
 <% @agents.each do |agent| %>
-</br>
-<%= agent.pretty_name %>
-
+<tr>
+<td><%= agent.pretty_name %></td>
+</tr>
 <% end %>
 <br>
 

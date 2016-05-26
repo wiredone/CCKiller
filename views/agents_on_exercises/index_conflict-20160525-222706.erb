@@ -1,17 +1,15 @@
 <a href="/agents_on_exercises/new">Add new agent on exercise</a><br>
 
 <table>
-  <caption>Agents on Exercises (join table)</caption>
-
   <tr>
-      <th>Agent </th>
+      <th>Agent ID</th>
       <th>Asset Name</th>
       <th>Exercise Name</th>
     </tr>
 <% @agents_on_exercises.each do |agent_on_exercise| %>
 <tr>
 
-<td><%= agent_on_exercise.asset.pretty_name%> </td>
+<td><%= agent_on_exercise.id%> </td>
 <td><%= agent_on_exercise.asset_name %> </td>
 <td><%= agent_on_exercise.exercise.name %> </td>
 </tr>

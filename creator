@@ -39,6 +39,7 @@ begin
     con.exec "Create table agents_on_exercises(
     Id SERIAL4 PRIMARY KEY,
     asset int4 references agents(id),
+    Asset_Name VARCHAR(255),
     exercise int4 references exercises(id)
     )"
 

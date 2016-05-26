@@ -6,19 +6,23 @@
 </head>
 
 
-<body>
+<body class = "parentpo">
 
-<header>
-<banner>
+<header class="parent">
+
+
+<banner class="child">
   <!-- incase of image -->
+<img src="/img/killer_ban.png" alt="Mountain View" style="width:400px">
+
 
 </banner>
 
-  <nav>
-  <a href="/">Home</a>
-  <a href="/agents">Agents</a>
-  <a href="/agents_on_exercises">Agents on Exercises</a>
-  <a href="/exercises">Exercises</a>
+<nav class="child">
+<a href="/">Home</a>
+<a href="/agents">Agents</a>
+<a href="/agents_on_exercises">Agents on Exercises</a>
+<a href="/exercises">Exercises</a>
   </nav>
 
 </header>
@@ -26,7 +30,7 @@
 
 
 
-<main>
+<main class="parent">
 <%= yield %>
 </main>
 

@@ -3,16 +3,18 @@ require_relative('../db/sql_runner')
 
 class Agent_on_Exercise
 
-  attr_reader :id, :agent_id, :exercise_id
+  attr_reader :id, :agent_id, :exercise_id, :asset_name
 
   def initialize( options )
     @id = options['id'].to_i
     @asset = options['asset'].to_i
     @exercise = options['exercise'].to_i
+    @asset_name = options['asset_name']
   end
 
   def save()
-    sql = "INSERT INTO agents_on_exercises(asset, exercise) VALUES (#{@asset}, #{@exercise}) RETURNING *"
+    new_asset_name =gen_asset_name
+    sql = "INSERT INTO agents_on_exercises(asset, asset_name, exercise) VALUES (#{@asset}, '#{new_asset_name}', #{@exercise}) RETURNING *"
  puts sql
    agent_on_exercise = SqlRunner.run_sql(sql).first
 
@@ -83,4 +85,7 @@ class Agent_on_Exercise
     SqlRunner.run_sql(sql)
   end
 
+  def gen_asset_name()
+  return "Mr. " + "%06x" % (rand * 0xffffff)
+  end
 end
